@@ -1,4 +1,4 @@
-local rvm='%{$fg[red]%}🔻$(rvm-prompt i v g)%🔺{$reset_color%}'
+local rvm='%{$fg[red]%}$(rvm-prompt i v g)%{$reset_color%}'
 
 local user='%{$fg[cyan]%}%n%{$reset_color%}@%{$fg[magenta]%}%m%{$reset_color%}'
 
@@ -13,7 +13,7 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
-PROMPT="%{$fg[white]%}[${time}|${user}|${pwd}%{$fg[white]%}]%{$reset_color%}
-%{$fg[red]%}> "
+PROMPT="%{$fg[white]%}[${time}|${pwd}%{$fg[white]%}]%{$reset_color%}
+%{$fg[red]%}$ "
 
 RPROMPT="${rvm}"
