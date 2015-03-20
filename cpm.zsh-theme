@@ -1,4 +1,4 @@
-local rvm='%{$fg[green]%}‹$(rvm-prompt i v g)›%{$reset_color%}'
+local rvm='%{$fg[red]%}🔻$(rvm-prompt i v g)%🔺{$reset_color%}'
 
 local user='%{$fg[cyan]%}%n%{$reset_color%}@%{$fg[magenta]%}%m%{$reset_color%}'
 
