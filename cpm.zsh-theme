@@ -10,7 +10,7 @@ local time="%{$fg[white]%}%{$fg[yellow]%}%T%{$fg[white]%}%{$reset_color%}"
 
 local ruby="%{$fg[white]%}[%{$fg[magenta]%}\$(rvm-prompt i v g)%{$fg[white]%}]%{$reset_color%}"
 
-local git_commit_hash="%{$FG[055]%}$(git log -1 --pretty=oneline | cut -c -8)%{$reset_color%}"
+local git_commit_hash="%{$FG[055]%}$([ -d .git ] && git log -1 --pretty=oneline | cut -c -8)%{$reset_color%}"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
