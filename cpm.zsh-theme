@@ -2,19 +2,27 @@ autoload -U colors && colors
 
 git_commit_hash() {
   if [ -d .git ]; then
-    printf "$(git log -1 --pretty=oneline | cut -c -8)"
+    git log -1 --pretty=oneline | cut -c -8
   fi
 }
 
-local rvm='%{$FG[196]%}$(rvm-prompt i v g)%{$reset_color%}'
+function ruby_version() {
+  if which rvm-prompt &> /dev/null; then
+    rvm-prompt i v g
+  else
+    if which rbenv &> /dev/null; then
+      rbenv version | sed -e "s/ (set.*$//"
+    fi
+  fi
+}
+
+local ruby='%{$FG[196]%}$(ruby_version)%{$reset_color%}'
 
 local python='%{$FG[081]%}python-$(python -c "import sys; print(\".\".join(map(str, sys.version_info[:3])))")%{$reset_color%}'
 
 local pwd='%{$fg_bold[green]%}%p%{$fg[blue]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}%{$reset_color%}'
 
 local time="%{$fg[white]%}%{$fg[yellow]%}%T%{$fg[white]%}%{$reset_color%}"
-
-local ruby="%{$fg[white]%}[%{$fg[magenta]%}\$(rvm-prompt i v g)%{$fg[white]%}]%{$reset_color%}"
 
 local commit_hash="%{$FG[055]%}$(git_commit_hash)%{$reset_color%}"
 
@@ -26,4 +34,4 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 PROMPT="%{$fg[white]%}[${time}|${pwd}%{$fg[white]%}]%{$reset_color%} ${commit_hash}
 %{$fg[red]%}$ "
 
-RPROMPT="${rvm} ${python}"
+RPROMPT="${ruby} ${python}"
