@@ -1,8 +1,8 @@
 autoload -U colors && colors
 
-git_commit_hash() {
+function git_commit_hash() {
   if [ -d .git ]; then
-    git log -1 --pretty=oneline | cut -c -8
+    git rev-parse HEAD | cut -c -8
   fi
 }
 
@@ -17,7 +17,7 @@ function ruby_version() {
 }
 
 # Thanks open source!
-_fishy_collapsed_wd() {
+function _fishy_collapsed_wd() {
   echo $(pwd | perl -pe '
    BEGIN {
       binmode STDIN,  ":encoding(UTF-8)";
