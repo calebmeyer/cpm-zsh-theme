@@ -34,7 +34,8 @@ local pwd='%{$fg[blue]%}$(_fishy_collapsed_wd) %{$fg_bold[blue]%}$(git_prompt_in
 
 local time="%{$fg[white]%}%{$fg[yellow]%}%T%{$fg[white]%}%{$reset_color%}"
 
-local commit_hash="%{$FG[055]%}$(git_commit_hash)%{$reset_color%}"
+# single quotes allow this to be evaluated each time
+local commit_hash='%{$FG[055]%}$(git_commit_hash)%{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
